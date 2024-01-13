@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const { ServerConfig,dbConnect } = require('./config');
+const Routes = require('./routes');
 
 const app = express();
 
@@ -15,6 +16,7 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.static("public"));
 app.use(cookieParser());
 
+app.use('/',Routes);
 
 
 app.listen(ServerConfig.PORT, () => {

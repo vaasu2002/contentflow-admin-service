@@ -29,7 +29,7 @@ async function createContentType(req, res){
 async function getContentTypes(req, res){
     try{
         const contentType = await contentTypeService.getContentTypes({
-            orgId: req.body.organization,
+            orgId: req.headers.organization,
         });
         SuccessResponse.data = contentType;
         return res

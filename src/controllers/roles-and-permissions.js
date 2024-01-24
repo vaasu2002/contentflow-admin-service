@@ -9,8 +9,9 @@ const roleAndPermissionService = new RoleAndPermissionService();
 
 async function createRole(req,res){
     try{
+        console.log('here')
         const role = await roleAndPermissionService.createRole({
-            name:req.body.name,
+            name:req.body.name,    
             orgId:req.body.organization,
             canAnyoneSignUp:req.body.canAnyoneSignUp,
             findAll:req.body.findAll,
@@ -35,7 +36,7 @@ async function createRole(req,res){
 async function getRoles(req, res){
     try{
         const role = await roleAndPermissionService.getRoles({
-            orgId: req.body.organization,
+            orgId: req.headers.organization,
         });
         SuccessResponse.data = role;
         return res
@@ -53,7 +54,7 @@ async function getRoles(req, res){
 async function getRole(req, res){
     try{
         const contentType = await roleAndPermissionService.getRole({
-            orgId: req.body.organization,
+            orgId: req.headers.organization,
             roleId: req.params.id,
         });
         SuccessResponse.data = contentType;

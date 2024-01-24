@@ -30,17 +30,17 @@ async function getContentTypes(req, res){
     try{
         const contentType = await contentTypeService.getContentTypes({
             orgId: req.headers.organization,
-        });
+        });  
         SuccessResponse.data = contentType;
         return res
                 .status(StatusCodes.OK)
                 .json(SuccessResponse);
-        
     }catch(error){
         ErrorResponse.error = error;
+        
         return res
             .status(error.statusCode)
-            .json(ErrorResponse);
+            .json(ErrorResponse);b   
     }
 } 
 
